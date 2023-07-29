@@ -16,6 +16,24 @@ export const loadNotes = async () => {
     console.error(err);
   }
 };
+export const createNote = async (note) => {
+  try {
+    console.log(note);
+    const newNote = {
+      id: crypto.randomUUID(),
+      isArchived: false,
+      created: new Date(),
+      name: note.newName,
+      category: note.newCategory,
+      content: note.newContent,
+      mentioned: note.newMentioned,
+    };
+
+    state.notes.push(newNote);
+  } catch (err) {
+    console.error(err);
+  }
+};
 export const deleteNote = async (id) => {
   try {
     //TODO change filter !==
