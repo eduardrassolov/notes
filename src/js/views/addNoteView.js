@@ -11,17 +11,19 @@ class AddNoteView {
     this._addHandlerHide();
   }
 
-  _toggle() {
-    this._overlay.classList.toggle("hidden");
-    this._modal.classList.toggle("hidden");
-    this._firstInput.focus();
-  }
   _addHandlerShow() {
-    this._btnOpen.addEventListener("click", this._toggle.bind(this));
+    this._btnOpen.addEventListener("click", this.toggle.bind(this));
   }
   _addHandlerHide() {
-    this._btnClose.addEventListener("click", this._toggle.bind(this));
-    this._overlay.addEventListener("click", this._toggle.bind(this));
+    this._btnClose.addEventListener("click", this.toggle.bind(this));
+    this._overlay.addEventListener("click", this.toggle.bind(this));
+  }
+
+  toggle() {
+    this._overlay.classList.toggle("hidden");
+    this._modal.classList.toggle("hidden");
+    this._form.reset();
+    this._firstInput.focus();
   }
 
   addHandlerSubmit(handler) {

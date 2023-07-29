@@ -1,3 +1,5 @@
+import { formatTime } from "../services/formatTime";
+
 class NotesView {
   _parentElement = document.querySelector(".table-content");
   _data;
@@ -15,10 +17,10 @@ class NotesView {
     return `
         <tr>
             <td>${note?.name}</td>
-            <td>${note?.created}</td>
+            <td>${formatTime(note?.created)}</td>
             <td>${note?.category}</td>
             <td>${note?.content}</td>
-            <td>${note?.mentioned}</td>
+            <td>${formatTime(note?.mentioned)}</td>
             <td class="btns-cell">
               <button class="btn-edit" value=${note.id}>E</button>
               <button class="btn-archive" value=${note.id}>A</button>

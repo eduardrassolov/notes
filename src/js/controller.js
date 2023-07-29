@@ -32,6 +32,7 @@ async function controlAddNote(note) {
   try {
     await model.createNote(note);
     notesView.render(model.state.notes);
+    addNoteView.toggle();
   } catch (err) {
     console.error(err);
   }
