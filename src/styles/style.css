@@ -16,10 +16,6 @@
 }
 body {
   margin: 0;
-  display: flex;
-  place-items: start;
-  min-width: 320px;
-  min-height: 100vh;
 }
 
 h1 {
@@ -31,19 +27,88 @@ textarea {
 }
 
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
+  width: 100vw;
+  height: 100dvh;
+  overflow: scroll;
 }
 
+.container {
+  min-width: 900px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 .main-table {
+  margin: 1rem auto;
+  table-layout: fixed;
   width: 100%;
   border-collapse: collapse;
-  border-spacing: 0;
-  border: 1px solid #000000;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  border-radius: 1rem;
 }
+.cell-name {
+  width: 150px;
+}
+.cell-created {
+  width: 100px;
+}
+.cell-category {
+  width: 100px;
+}
+.cell-content {
+  width: 250px;
+}
+.cell-mention {
+  width: 150px;
+}
+.cell-operation {
+  width: 75px;
+}
+.cell {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0.5rem;
+  border-spacing: 0;
+}
+.row {
+  background: gray;
+  margin-bottom: 2rem;
+}
+
+img {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+}
+a {
+  margin: 0 auto;
+}
+thead > tr {
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: left;
+}
+thead > tr > th {
+  padding: 0.5rem;
+}
+tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+tbody tr:nth-child(odd) {
+  background-color: #fff;
+}
+tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+tbody tr:nth-child(even) {
+  background-color: #eee;
+}
+tbody tr:hover {
+  background-color: #ddd;
+}
+
 .table-content {
   align-items: start;
   justify-content: start;
@@ -52,8 +117,6 @@ textarea {
 }
 .btns-cell {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .btn {

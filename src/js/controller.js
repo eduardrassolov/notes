@@ -13,6 +13,7 @@ async function controlGetNotes() {
   }
 }
 async function controlDeleteNote(id) {
+  console.log("id", id);
   try {
     await model.deleteNote(id);
     notesView.render(model.state.notes);

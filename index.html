@@ -10,23 +10,24 @@
 
   <body>
     <div id="app">
-      <table class="main-table">
-        <thead class="table-header">
-          <tr>
-            <th>Name</th>
-            <th>Created</th>
-            <th>Category</th>
-            <th>Content</th>
-            <th>Date</th>
-            <th>x x</th>
-          </tr>
-        </thead>
+      <div class="container">
+        <table class="main-table">
+          <thead class="table-header">
+            <tr>
+              <th class="cell-name">Name</th>
+              <th class="cell-created">Created</th>
+              <th class="cell-category">Category</th>
+              <th class="cell-content">Content</th>
+              <th class="cell-mention">Date</th>
+              <th class="cell-operation">x x</th>
+            </tr>
+          </thead>
 
-        <tbody class="table-content"></tbody>
-      </table>
+          <tbody class="table-content"></tbody>
+        </table>
 
-      <button class="btn btn-add-note">add note</button>
-
+        <button class="btn btn-add-note">add note</button>
+      </div>
       <!-- modal window for new note. overlay -->
       <div class="overlay hidden"></div>
       <div class="add-note-window hidden">

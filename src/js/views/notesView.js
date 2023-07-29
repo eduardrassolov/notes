@@ -15,16 +15,26 @@ class NotesView {
   }
   _generateMarkupNote(note) {
     return `
-        <tr>
-            <td>${note?.name}</td>
-            <td>${formatTime(note?.created)}</td>
-            <td>${note?.category}</td>
-            <td>${note?.content}</td>
-            <td>${formatTime(note?.mentioned)}</td>
-            <td class="btns-cell">
-              <button class="btn-edit" value=${note.id}>E</button>
-              <button class="btn-archive" value=${note.id}>A</button>
-              <button class="btn-del" value=${note.id}>D</button>
+        <tr class="row">
+            <td class="cell cell-name">${note?.name}</td>
+            <td class="cell cell-created">${formatTime(note?.created)}</td>
+            <td class="cell cell-category">${note?.category}</td>
+            <td class="cell cell-content">${note?.content}</td>
+            <td class="cell cell-mentioned">${formatTime(note?.mentioned)}</td>
+            <td class="cell-operation">
+              <div class="btns-cell">
+                <a class="btn-edit" value=${
+                  note.id
+                }><img src="public/editIcon.png" alt="edit"/></a>
+
+                <a class="btn-archive" value=${
+                  note.id
+                }><img src="public/archiveIcon.png" alt="archive"/></a>
+
+                <a class="btn-del" value=${
+                  note.id
+                }><img src="public/deleteIcon.png" alt="delete"/></a>        
+              </div>
             </td>
         </tr>
         `;
@@ -45,7 +55,7 @@ class NotesView {
     this._parentElement.addEventListener("click", function (e) {
       const btn = e.target.closest(btnName);
       if (!btn) return;
-      const { value } = btn;
+      const value = btn.getAttribute("value");
       handler(value);
     });
   }
