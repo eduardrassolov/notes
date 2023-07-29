@@ -18,7 +18,7 @@ export const loadNotes = async () => {
 };
 export const createNote = async (note) => {
   try {
-    console.log(note);
+    console.log("in", note);
     const newNote = {
       id: crypto.randomUUID(),
       isArchived: false,
@@ -26,9 +26,10 @@ export const createNote = async (note) => {
       name: note.newName,
       category: note.newCategory,
       content: note.newContent,
-      mentioned: note.newMentioned,
+      mentioned: [note.newMention],
     };
 
+    console.log("out", newNote);
     state.notes.push(newNote);
   } catch (err) {
     console.error(err);
@@ -50,6 +51,21 @@ export const archiveNote = async (id) => {
         note.isArchived = !note.isArchived;
       }
       return note;
+    });
+  } catch (err) {
+    console.error(err);
+  }
+};
+export const updateNote = async (id, note) => {
+  try {
+    state.notes = state.notes.map((el) => {
+      if (el.id == id) {
+        el.name = note.name;
+        el.category = note.category;
+        el.content = note.content;
+        el.mentioned = note.mentioned;
+      }
+      return el;
     });
   } catch (err) {
     console.error(err);

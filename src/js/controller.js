@@ -38,11 +38,20 @@ async function controlAddNote(note) {
     console.error(err);
   }
 }
+async function controlEditNote(id, updNote) {
+  try {
+    await model.updateNote(id, note);
+    notesView.render(model.state.notes);
+  } catch (err) {
+    console.error(err);
+  }
+}
 
 function init() {
   notesView.addHandlerRender(controlGetNotes);
   notesView.addHandlerBtn(controlDeleteNote, ".btn-del");
   notesView.addHandlerBtn(controlArchiveNote, ".btn-archive");
+  notesView.addHandlerBtn(controlEditNote, ".btn-edit");
 
   addNoteView.addHandlerSubmit(controlAddNote);
 }

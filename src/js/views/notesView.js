@@ -1,4 +1,5 @@
 import { formatTime } from "../services/formatTime";
+import { formatCreate, formatMention } from "../config";
 
 class NotesView {
   _parentElement = document.querySelector(".table-content");
@@ -17,10 +18,15 @@ class NotesView {
     return `
         <tr class="row">
             <td class="cell cell-name">${note?.name}</td>
-            <td class="cell cell-created">${formatTime(note?.created)}</td>
+            <td class="cell cell-created">${formatTime(
+              note?.created,
+              formatCreate
+            )}</td>
             <td class="cell cell-category">${note?.category}</td>
             <td class="cell cell-content">${note?.content}</td>
-            <td class="cell cell-mentioned">${formatTime(note?.mentioned)}</td>
+            <td class="cell cell-mentioned">${
+              note.mentioned.length ? this._generateMention(note.mentioned) : ""
+            }</td>
             <td class="cell-operation">
               <div class="btns-cell">
                 <a class="btn-edit" value=${
@@ -38,6 +44,9 @@ class NotesView {
             </td>
         </tr>
         `;
+  }
+  _generateMention(mentions) {
+    return `${mentions.map((mention) => formatTime(mention, formatMention))}`;
   }
   render(data) {
     this._data = data;
