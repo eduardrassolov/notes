@@ -10,3 +10,16 @@ export const formatMention = {
   month: "numeric",
   year: "numeric",
 };
+
+export const noteCategories = new Map(
+  Object.entries({
+    idea: "Idea",
+    task: "Task",
+    random: "Random Thought",
+    quote: "Quote",
+  })
+);
+
+export function getValueCategory(key) {
+  return noteCategories.get(key);
+}

@@ -1,5 +1,5 @@
 import { formatTime } from "../services/formatTime";
-import { formatCreate, formatMention } from "../config";
+import { formatCreate, formatMention, getValueCategory } from "../config";
 
 class NotesView {
   _parentElement = document.querySelector(".table-content");
@@ -14,6 +14,7 @@ class NotesView {
       .map((note) => this._generateMarkupNote(note))
       .join("")}`;
   }
+
   _generateMarkupNote(note) {
     return `
         <tr class="row">
@@ -22,7 +23,9 @@ class NotesView {
               note?.created,
               formatCreate
             )}</td>
-            <td class="cell cell-category">${note?.category}</td>
+            <td class="cell cell-category">${getValueCategory(
+              note.category
+            )}</td>
             <td class="cell cell-content">${note?.content}</td>
             <td class="cell cell-mentioned">${
               note.mentioned.length ? this._generateMention(note.mentioned) : ""
@@ -46,7 +49,9 @@ class NotesView {
         `;
   }
   _generateMention(mentions) {
-    return `${mentions.map((mention) => formatTime(mention, formatMention))}`;
+    return `${mentions
+      .map((mention) => formatTime(mention, formatMention))
+      .join(", ")}`;
   }
   render(data) {
     this._data = data;

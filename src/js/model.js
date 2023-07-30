@@ -2,6 +2,7 @@ import { URL } from "./config.js";
 
 export const state = {
   notes: [],
+  selectedNote: {},
 };
 
 export const loadNotes = async () => {
@@ -67,6 +68,14 @@ export const updateNote = async (id, note) => {
       }
       return el;
     });
+  } catch (err) {
+    console.error(err);
+  }
+};
+export const getNoteById = async (id) => {
+  try {
+    //TODO don't forget to change find !== to !===
+    state.selectedNote = state.notes.find((note) => note.id == id);
   } catch (err) {
     console.error(err);
   }

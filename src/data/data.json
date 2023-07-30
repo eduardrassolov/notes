@@ -3,16 +3,16 @@
     "id": 1,
     "name": "test",
     "created": "2019-01-01T00:00:00.000Z",
-    "category": "Task",
+    "category": "task",
     "content": "Odio mauris consectetur tellus est elit dapibus eget. Ultrices facilisis tincidunt arcu id, tristique potenti morbi tortor laore.",
-    "mentioned": [1690672633090, 1690672633094, 1690602633090],
+    "mentioned": ["2022-01-01", "2023-01-10"],
     "isArchived": false
   },
   {
     "id": 2,
     "name": "test2",
     "created": "2019-01-01T00:00:00.000Z",
-    "category": "Task",
+    "category": "task",
     "content": "Odio mauris consectetur tellus est elit dapibus eget. Ultrices facilisis tincidunt arcu id, tristique potenti morbi tortor laore.",
     "mentioned": [],
     "isArchived": false
@@ -21,7 +21,7 @@
     "id": 3,
     "name": "test3",
     "created": "2019-01-01T00:00:00.000Z",
-    "category": "Idea",
+    "category": "idea",
     "content": "tellus est elit dapibus eget. Ultrices facilisis tincidunt arcu id, tristique potenti morbi tortor laore.",
     "mentioned": [],
     "isArchived": false
@@ -30,7 +30,7 @@
     "id": 4,
     "name": "test4",
     "created": "2019-01-01T00:00:00.000Z",
-    "category": "Random Thought",
+    "category": "random",
     "content": "Odio mauris consectetur tellus est elit dapibus eget. Ultrices facilisis tincidunt arcu id, tristique potenti morbi tortor laore.",
     "mentioned": [],
     "isArchived": false
@@ -39,7 +39,7 @@
     "id": 5,
     "name": "test5",
     "created": "2019-01-01T00:00:00.000Z",
-    "category": "Idea",
+    "category": "idea",
     "content": "Ultrices facilisis tincidunt arcu id, tristique potenti morbi tortor laore.",
     "mentioned": [],
     "isArchived": false

@@ -168,7 +168,7 @@ tbody tr:hover {
   z-index: 5;
 }
 
-.add-note-window {
+.modal-window {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -191,7 +191,7 @@ tbody tr:hover {
   flex-direction: column;
   margin-bottom: 1rem;
 }
-.add-note-window input,
+.modal-window input,
 textarea,
 select {
   padding: 0.5rem;
