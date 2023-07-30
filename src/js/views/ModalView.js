@@ -10,7 +10,6 @@ export default class ModalView {
 
   constructor(btnName) {
     this._btnOpen = document.querySelector(btnName);
-    console.log(this._btnOpen);
   }
 
   _clean() {
@@ -52,5 +51,6 @@ export default class ModalView {
     this._form = document.querySelector(".form-note");
 
     this._btnClose.addEventListener("click", this.close.bind(this));
+    this;
   }
 }

@@ -38,9 +38,8 @@ async function controlDeleteNote(id) {
 async function controlArchiveNote(id) {
   try {
     await archiveNote(id);
-    console.log("archvied");
     notesView.render(state.allNotes);
-    // controlStats();
+    controlStats();
   } catch (err) {
     console.error(err);
   }

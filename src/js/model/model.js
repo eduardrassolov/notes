@@ -10,7 +10,7 @@ export const state = {
 
 export const archiveNote = async (id) => {
   try {
-    state.notes = state.notes.map((note) => {
+    state.allNotes = state.allNotes.map((note) => {
       if (note.id == id || id === ARCHIVE_ALL) {
         note.isArchived = !note.isArchived;
       }
