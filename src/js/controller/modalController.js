@@ -5,10 +5,18 @@ import { createNote, updateNote } from "../model/crud.js";
 import notesView from "../views/notesView.js";
 import { getNoteById, state } from "../model/model.js";
 
+/**
+ * Controller for the open modal for new note
+ */
 function controllOpenAdd() {
   addNoteView.open();
   addNoteView.addHandlerSubmit(controlAddNote);
 }
+
+/**
+ * Controller for the open modal for edit note
+ * @param {string} id
+ */
 function controlOpenEdit(id) {
   getNoteById(id);
   const note = state.selectedNote;
@@ -16,6 +24,10 @@ function controlOpenEdit(id) {
   editNoteView.addHandlerSubmit(controlEditNote, note.id);
 }
 
+/**
+ * Controller for the add new note
+ * @param {object} note
+ */
 async function controlAddNote(note) {
   try {
     await createNote(note);
@@ -26,6 +38,12 @@ async function controlAddNote(note) {
     console.error(err);
   }
 }
+
+/**
+ * Controller for the edit note
+ * @param {string} id
+ * @param {object} updatedNote
+ */
 async function controlEditNote(id, note) {
   console.log(id, note);
   try {

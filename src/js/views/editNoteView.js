@@ -1,14 +1,28 @@
-import { formatMention, noteCategories } from "../config.js";
-import { formatTime } from "../services/formatTime.js";
 import ModalView from "./ModalView.js";
+import { noteCategories } from "../config.js";
+import { getLastMention } from "../services/getLastDateMention.js";
 
+/**
+ * View for the edit note
+ * @extends ModalView
+ * @class
+ * @returns {object} New instance of EditNoteView
+ * @public
+ * @requires ModalView
+ * @requires config
+ * @requires getLastMention
+ */
 class EditNoteView extends ModalView {
   constructor() {
     super(".btn-edit");
   }
+
+  /**
+   * Generate markup of edit modal window
+   * @returns {string} Markup of edit modal window
+   */
   _generateMarkup() {
-    const { id, name, category, content, mentioned } = this._entryData;
-    console.log(category);
+    const { name, category, content, mentioned } = this._entryData;
     return `
     <h3>Edit note:</h3>
         <form class="form-note">
@@ -45,7 +59,7 @@ class EditNoteView extends ModalView {
           <div class="form-group">
             <label for="newMention">Date of mention:</label>
 
-            <input type="date" id="newMention" name="newMention" value=${this._getLastMention(
+            <input type="date" id="newMention" name="newMention" value=${getLastMention(
               mentioned
             )} />
           </div>
@@ -56,12 +70,12 @@ class EditNoteView extends ModalView {
           </div>
         </form>`;
   }
-  _getLastMention(metions) {
-    if (!metions?.length) return null;
-    const last = metions[metions.length - 1];
 
-    return `${new Date(last).toISOString().split("T")[0]}`;
-  }
+  /**
+   * Add handler for submit form
+   * @param {function} handler Callback function for submit form
+   * @param {string} id
+   */
   addHandlerSubmit(handler, id) {
     this._form.addEventListener("submit", function (e) {
       e.preventDefault();

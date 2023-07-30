@@ -1,5 +1,14 @@
 import { filterArchived, ARCHIVE_ALL } from "../config.js";
 
+/**
+ * State of the app
+ * @type {object}
+ * @property {array} allNotes - all notes
+ * @property {array} notes - filtered notes
+ * @property {string} filter - filter status
+ * @property {object} selectedNote - selected note. Used for edit note.
+ * @property {array} stats - stats of the notes. Used for render stats.
+ */
 export const state = {
   allNotes: [],
   notes: [],
@@ -8,6 +17,10 @@ export const state = {
   stats: [],
 };
 
+/**
+ * Logic of of archive/dearchive note
+ * @param {string} id
+ */
 export const archiveNote = async (id) => {
   try {
     state.allNotes = state.allNotes.map((note) => {
@@ -20,6 +33,11 @@ export const archiveNote = async (id) => {
     console.error(err);
   }
 };
+
+/**
+ * Logic of find note by id
+ * @param {string} id
+ */
 export const getNoteById = async (id) => {
   try {
     //TODO don't forget to change find !== to !===
@@ -28,8 +46,8 @@ export const getNoteById = async (id) => {
     console.error(err);
   }
 };
-//TODO refactor params
 
+//TODO refactor params
 export const filterNotes = async (isArchived = false) => {
   console.log("status", isArchived);
   try {

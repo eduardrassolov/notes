@@ -1,16 +1,27 @@
 import ModalView from "./ModalView.js";
 import { noteCategories } from "../config.js";
 
+/**
+ * View for the add note
+ * @extends ModalView
+ * @class
+ * @returns {object} New instance of AddNoteView
+ * @public
+ * @constructor
+ * @requires ModalView
+ * @requires config
+ */
 class AddNoteView extends ModalView {
   constructor() {
     super(".btn-add-note");
   }
-  addHandlerBtn(handler) {
-    this._btnOpen.addEventListener("click", handler);
-  }
 
+  /**
+   * Generate markup of modal window
+   * @private
+   * @returns {string} Markup of modal window
+   */
   _generateMarkup() {
-    console.log(noteCategories);
     return `
     <h3>Add new note:</h3>
         <form class="form-note">
@@ -56,6 +67,20 @@ class AddNoteView extends ModalView {
         </form>`;
   }
 
+  /**
+   * Add event listener to the button for open modal window
+   * @param {function} handler
+   * @public
+   */
+  addHandlerBtn(handler) {
+    this._btnOpen.addEventListener("click", handler);
+  }
+
+  /**
+   * Add event listener to the form for submit event
+   * @param {*} handler
+   * @public
+   */
   addHandlerSubmit(handler) {
     this._form.addEventListener("submit", function (e) {
       e.preventDefault();

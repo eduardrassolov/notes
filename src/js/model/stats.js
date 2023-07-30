@@ -1,9 +1,28 @@
 import { state } from "./model";
 import { noteCategories } from "../config.js";
 
+/**
+ * Logic of calc stats
+ */
+export const calcStats = () => {
+  try {
+    state.stats = [];
+    noteCategories.forEach((_, key) =>
+      state.stats.push(calcStatsByCategory(key))
+    );
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+/**
+ * Logic of calc stats(active, archived) by category
+ * @param {string} category
+ * @returns {object}
+ *
+ */
 const calcStatsByCategory = (category) => {
   try {
-    console.log(category);
     const filteredNotes = state.allNotes.filter(
       (note) => note.category === category
     );
@@ -19,19 +38,6 @@ const calcStatsByCategory = (category) => {
       active: activeFilteredNotes,
       archived: filteredNotes.length - activeFilteredNotes,
     };
-  } catch (err) {
-    console.error(err);
-  }
-};
-
-export const calcStats = () => {
-  try {
-    console.log("TOTAL", state.allNotes.length);
-    state.stats = [];
-    noteCategories.forEach((_, key) =>
-      state.stats.push(calcStatsByCategory(key))
-    );
-    console.log("stas", state.stats);
   } catch (err) {
     console.error(err);
   }

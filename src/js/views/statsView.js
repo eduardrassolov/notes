@@ -1,25 +1,24 @@
 import { icons } from "../config.js";
 import { getValueCategory } from "../services/getValueCategory.js";
 
+/**
+ * View for the stats
+ * @class
+ * @returns {object} New instance of StatsView
+ * @public
+ * @requires getValueCategory
+ * @requires icons
+ */
 class StatsView {
   _parentElement;
+  _data;
+
   constructor() {
     this._parentElement = document.querySelector(".stats-table-content");
   }
-
-  render(data) {
-    this._data = data;
-    console.log(data);
-    const markup = this._generateMarkup(data);
-
-    this._clear();
-    this._parentElement.insertAdjacentHTML("afterbegin", markup);
-  }
-
   _clear() {
     this._parentElement.innerHTML = "";
   }
-
   _generateMarkup(data) {
     return data
       .map((option) => {
@@ -37,6 +36,15 @@ class StatsView {
         `;
       })
       .join(" ");
+  }
+
+  render(data) {
+    this._data = data;
+    console.log(data);
+    const markup = this._generateMarkup(data);
+
+    this._clear();
+    this._parentElement.insertAdjacentHTML("afterbegin", markup);
   }
 }
 

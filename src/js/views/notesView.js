@@ -2,6 +2,15 @@ import { formatTime } from "../services/formatTime";
 import { formatCreate, formatMention, icons } from "../config";
 import { getValueCategory } from "../services/getValueCategory.js";
 
+/**
+ * View for the notes
+ * @class
+ * @returns {object} New instance of NotesView
+ * @public
+ * @requires formatTime
+ * @requires config
+ * @requires getValueCategory
+ */
 class NotesView {
   _parentElement = document.querySelector(".table-content");
   _data;
@@ -10,12 +19,17 @@ class NotesView {
     this._parentElement.innerHTML = "";
   }
   _generateMarkup() {
-    console.log(this._data);
     return `${this._data
       .map((note) => this._generateMarkupNote(note))
       .join("")}`;
   }
 
+  /**
+   * Generate markup of each note
+   * @param {object} note
+   * @private
+   * @returns {string} Markup of note
+   */
   _generateMarkupNote(note) {
     return `
         <tr class="row">
@@ -62,23 +76,42 @@ class NotesView {
         </tr>
         `;
   }
+  /**
+   * Generate markup of each dates of mention
+   * @param {array} mentions
+   * @returns {string} String of mentions
+   */
   _generateMention(mentions) {
     return `${mentions
       .map((mention) => formatTime(mention, formatMention))
       .join(", ")}`;
   }
+
+  /**
+   * Render notes
+   * @param {object} data
+   */
   render(data) {
     this._data = data;
-    console.log("render", data);
     const markup = this._generateMarkup();
 
     this._clean();
     this._parentElement.insertAdjacentHTML("afterbegin", markup);
   }
 
+  /**
+   * Add handler for render, when page is loaded
+   * @param {function} handler
+   */
   addHandlerRender(handler) {
     window.addEventListener("load", handler);
   }
+
+  /**
+   * Add handler for click on button
+   * @param {function} handler Function for handling click on button
+   * @param {string} btnName  Name of button
+   */
   addHandlerBtn(handler, btnName) {
     this._parentElement.addEventListener("click", function (e) {
       const btn = e.target.closest(btnName);

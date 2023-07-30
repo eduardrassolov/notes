@@ -1,6 +1,9 @@
 import { URL, DELETE_ALL } from "../config.js";
 import { state } from "./model.js";
 
+/**
+ * Logic of load notes
+ */
 export const loadNotes = async () => {
   try {
     const res = await fetch(URL);
@@ -12,6 +15,11 @@ export const loadNotes = async () => {
     console.error(err);
   }
 };
+
+/**
+ * Logic of create new note
+ * @param {object} note
+ */
 export const createNote = async (note) => {
   try {
     console.log("in", note);
@@ -31,6 +39,11 @@ export const createNote = async (note) => {
     console.error(err);
   }
 };
+
+/**
+ * Logic of delete note
+ * @param {string} id
+ */
 export const deleteNote = async (id) => {
   try {
     //TODO change filter !==
@@ -41,6 +54,12 @@ export const deleteNote = async (id) => {
     console.error(err);
   }
 };
+
+/**
+ * Logic of update note
+ * @param {string} id
+ * @param {object} updatedNote
+ */
 export const updateNote = async (
   id,
   { newName, newCategory, newContent, newMention }
