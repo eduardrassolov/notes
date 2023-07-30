@@ -6,12 +6,11 @@ export const loadNotes = async () => {
   try {
     const res = await fetch(URL);
     const allNotes = await res.json();
-
     if (!res.status) throw new Error(`${data.message} (${res.status})`);
 
     state.allNotes = [...allNotes];
 
-    filterNotes("all");
+    // filterNotes("all");
   } catch (err) {
     console.error(err);
   }
@@ -30,7 +29,7 @@ export const createNote = async (note) => {
     };
 
     console.log("out", newNote);
-    state.notes.push(newNote);
+    state.allNotes.push(newNote);
   } catch (err) {
     console.error(err);
   }
@@ -38,9 +37,9 @@ export const createNote = async (note) => {
 export const deleteNote = async (id) => {
   try {
     //TODO change filter !==
-    if (id === DELETE_ALL) return (state.notes = []);
+    if (id === DELETE_ALL) return (state.allNotes = []);
 
-    state.notes = state.notes.filter((note) => note.id != id);
+    state.allNotes = state.allNotes.filter((note) => note.id != id);
   } catch (err) {
     console.error(err);
   }
@@ -50,7 +49,7 @@ export const updateNote = async (
   { newName, newCategory, newContent, newMention }
 ) => {
   try {
-    state.notes = state.notes.map((item) => {
+    state.allNotes = state.allNotes.map((item) => {
       console.log(item);
       if (item.id == id) {
         console.log("item", item);

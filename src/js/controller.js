@@ -19,7 +19,7 @@ async function controlGetNotes() {
   try {
     await loadNotes();
 
-    notesView.render(state.notes);
+    notesView.render(state.allNotes);
     controlStats();
   } catch (err) {
     console.error(err);
@@ -29,7 +29,8 @@ async function controlGetNotes() {
 async function controlDeleteNote(id) {
   try {
     await deleteNote(id);
-    notesView.render(state.notes);
+    notesView.render(state.allNotes);
+    controlStats();
   } catch (err) {
     console.error(err);
   }
@@ -38,7 +39,8 @@ async function controlArchiveNote(id) {
   try {
     await archiveNote(id);
     console.log("archvied");
-    notesView.render(state.notes);
+    notesView.render(state.allNotes);
+    // controlStats();
   } catch (err) {
     console.error(err);
   }
@@ -47,8 +49,9 @@ async function controlAddNote(note) {
   console.log("submit");
   try {
     await createNote(note);
-    notesView.render(state.notes);
+    notesView.render(state.allNotes);
     addNoteView.close();
+    controlStats();
   } catch (err) {
     console.error(err);
   }
@@ -57,8 +60,9 @@ async function controlEditNote(id, note) {
   console.log(id, note);
   try {
     await updateNote(id, note);
-    notesView.render(state.notes);
+    notesView.render(state.allNotes);
     editNoteView.close();
+    controlStats();
   } catch (err) {
     console.error(err);
   }
@@ -67,7 +71,7 @@ async function controlFilterNotes({ target }) {
   try {
     const value = target.value;
     await filterNotes(filterArchived[value]);
-    notesView.render(state.notes);
+    notesView.render(state.allNotes);
   } catch (err) {
     console.error(err);
   }

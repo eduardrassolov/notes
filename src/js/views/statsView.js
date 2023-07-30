@@ -1,4 +1,4 @@
-import { noteCategories, icons } from "../config.js";
+import { getValueCategory, icons } from "../config.js";
 
 class StatsView {
   _parentElement;
@@ -20,7 +20,6 @@ class StatsView {
   }
 
   _generateMarkup(data) {
-    console.log(data);
     return data
       .map((option) => {
         return `
@@ -28,7 +27,7 @@ class StatsView {
               <td class="cell">
                 <div class="cell-name-container">
                   <img src="${icons[option.key]}"/> 
-                  <span> ${option.key}<span>
+                  <span> ${getValueCategory(option.key)}<span>
                 </div>   
               </td>
               <td class="cell">${option.active}</td>
