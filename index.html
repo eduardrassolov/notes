@@ -3,14 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="module" src="src/js/controller.js"></script>
+    <script type="module" defer src="src/js/controller/controller.js"></script>
     <link rel="stylesheet" href="src/styles/style.css" />
     <title>Notes</title>
   </head>
 
   <body>
+    <!-- modal window for new/edit note. overlay -->
+    <div class="overlay hidden"></div>
+    <div class="modal-window hidden"></div>
+    <!-- modal window for new/edit note. overlay -->
+
     <div id="app">
       <div class="container">
+        <!--  -->
         <div class="header">
           <select class="note-filter">
             <option value="active" selected>Show Active</option>
@@ -19,7 +25,9 @@
           </select>
           <button class="btn btn-add-note">add note</button>
         </div>
+        <!--  -->
 
+        <!-- Main table  -->
         <table class="main-table">
           <thead class="table-header">
             <tr>
@@ -32,7 +40,7 @@
                 <div class="header-icons">
                   <div class="iconEmpty"></div>
                   <a class="btn-archive-all">
-                    <img src="public/archiveDark.png" alt="arhive all"
+                    <img src="public/archiveDark.png" alt="archive all"
                   /></a>
                   <a class="btn-delete-all">
                     <img
@@ -44,10 +52,10 @@
               </th>
             </tr>
           </thead>
-
           <tbody class="table-content"></tbody>
         </table>
       </div>
+      <!-- Main table  -->
 
       <!-- Stats table -->
       <div class="container">
@@ -61,11 +69,6 @@
         </table>
       </div>
       <!-- Stats table -->
-
-      <!-- modal window for new note. overlay -->
-      <div class="overlay hidden"></div>
-      <div class="modal-window hidden"></div>
-      <!-- modal window for new note. overlay -->
     </div>
   </body>
 </html>

@@ -1,10 +1,6 @@
 import { formatTime } from "../services/formatTime";
-import {
-  formatCreate,
-  formatMention,
-  getValueCategory,
-  icons,
-} from "../config";
+import { formatCreate, formatMention, icons } from "../config";
+import { getValueCategory } from "../services/getValueCategory.js";
 
 class NotesView {
   _parentElement = document.querySelector(".table-content");

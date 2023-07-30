@@ -1,16 +1,13 @@
-import { URL, ARCHIVE_ALL, DELETE_ALL } from "../config.js";
+import { URL, DELETE_ALL } from "../config.js";
 import { state } from "./model.js";
-import { filterNotes } from "./model.js";
 
 export const loadNotes = async () => {
   try {
     const res = await fetch(URL);
     const allNotes = await res.json();
-    if (!res.status) throw new Error(`${data.message} (${res.status})`);
+    if (!res.status) throw new Error(`${res.message} (${res.status})`);
 
     state.allNotes = [...allNotes];
-
-    // filterNotes("all");
   } catch (err) {
     console.error(err);
   }

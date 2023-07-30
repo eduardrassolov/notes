@@ -7,7 +7,6 @@ export const icons = {
   random: "public/random.png",
   quote: "public/quote.png",
 };
-
 export const formatCreate = {
   month: "long",
   day: "numeric",
@@ -18,7 +17,6 @@ export const formatMention = {
   month: "numeric",
   year: "numeric",
 };
-
 export const noteCategories = new Map(
   Object.entries({
     idea: "Idea",
@@ -27,13 +25,8 @@ export const noteCategories = new Map(
     quote: "Quote",
   })
 );
-
 export const filterArchived = {
   all: "all",
   archived: true,
   unarchived: false,
 };
-
-export function getValueCategory(key) {
-  return noteCategories.get(key);
-}

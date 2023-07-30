@@ -1,4 +1,4 @@
-import { URL, filterArchived, ARCHIVE_ALL, DELETE_ALL } from "../config.js";
+import { filterArchived, ARCHIVE_ALL } from "../config.js";
 
 export const state = {
   allNotes: [],

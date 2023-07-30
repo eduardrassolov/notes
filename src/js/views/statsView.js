@@ -1,4 +1,5 @@
-import { getValueCategory, icons } from "../config.js";
+import { icons } from "../config.js";
+import { getValueCategory } from "../services/getValueCategory.js";
 
 class StatsView {
   _parentElement;
