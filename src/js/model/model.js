@@ -23,7 +23,7 @@ export const archiveNote = async (id) => {
 export const getNoteById = async (id) => {
   try {
     //TODO don't forget to change find !== to !===
-    state.selectedNote = state.notes.find((note) => note.id == id);
+    state.selectedNote = state.allNotes.find((note) => note.id == id);
   } catch (err) {
     console.error(err);
   }

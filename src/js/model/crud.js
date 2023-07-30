@@ -56,7 +56,9 @@ export const updateNote = async (
         item.name = newName;
         item.category = newCategory;
         item.content = newContent;
-        item.mentioned.push(newMention);
+        item.mentioned[item.mentioned.length - 1] === newMention
+          ? ""
+          : item.mentioned.push(newMention);
       }
       return item;
     });
