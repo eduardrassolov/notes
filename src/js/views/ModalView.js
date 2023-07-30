@@ -32,7 +32,7 @@ export default class ModalView {
     this._clean();
 
     this._parentElement.insertAdjacentHTML("afterbegin", markup);
-    this._initBtns();
+    this._init();
   }
   _generateMarkupDropDown(data, selected = null) {
     let markUp = "";
@@ -46,11 +46,16 @@ export default class ModalView {
     return markUp;
   }
 
-  _initBtns() {
+  _init() {
     this._btnClose = document.querySelector(".btn-close-modal");
     this._form = document.querySelector(".form-note");
 
     this._btnClose.addEventListener("click", this.close.bind(this));
-    this;
+
+    // set min date to date picker
+    const currentDate = new Date().toISOString().split("T")[0];
+    this._form
+      .querySelector('input[type="date"]')
+      .setAttribute("min", currentDate);
   }
 }
