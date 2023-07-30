@@ -57,11 +57,17 @@ textarea {
 .cell-content {
   width: 250px;
 }
+
 .cell-mention {
+  white-space: nowrap;
+  overflow: scroll;
+  padding: 0.5rem;
+  border-spacing: 0;
   width: 150px;
 }
 .cell-operation {
   width: 75px;
+  padding: 0.5rem;
 }
 .cell {
   white-space: nowrap;

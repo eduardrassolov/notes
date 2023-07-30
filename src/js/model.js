@@ -59,16 +59,17 @@ export const archiveNote = async (id) => {
 //TODO refactor params
 export const updateNote = async (
   id,
-  { newName, newCategory, newContent, newMentioned }
+  { newName, newCategory, newContent, newMention }
 ) => {
   try {
     state.notes = state.notes.map((item) => {
       console.log(item);
       if (item.id == id) {
+        console.log("item", item);
         item.name = newName;
         item.category = newCategory;
         item.content = newContent;
-        item.mentioned = newMentioned;
+        item.mentioned.push(newMention);
       }
       return item;
     });
