@@ -35,7 +35,7 @@ textarea {
 .container {
   min-width: 900px;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 0 auto 5rem;
 }
 .main-table {
   margin: 1rem auto;
@@ -44,10 +44,21 @@ textarea {
   border-collapse: collapse;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
   border-radius: 1rem;
+  align-items: center;
 }
 .cell-name {
   width: 150px;
 }
+.cell-name-container {
+  display: flex;
+  align-items: center;
+}
+.cell-name-container > img {
+  margin: auto 0.5rem;
+  width: 2rem;
+  height: 2rem;
+}
+
 .cell-created {
   width: 100px;
 }
@@ -73,9 +84,12 @@ textarea {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding: 0.5rem;
   border-spacing: 0;
+  text-align: center;
+  align-items: center;
+  vertical-align: middle;
 }
+
 .iconEmpty {
   display: flex;
   width: 22px;
@@ -95,8 +109,7 @@ img {
   height: 22px;
   cursor: pointer;
 }
-a {
-}
+
 thead > tr {
   background-color: #000000;
   color: #ffffff;
@@ -159,7 +172,6 @@ tbody tr:hover {
 }
 
 .btn-add-note {
-  margin: 1rem 0 1rem auto;
   display: flex;
   flex-direction: column;
   justify-content: left;
@@ -220,4 +232,19 @@ select {
 }
 .hidden {
   display: none;
+}
+
+.stats-table {
+  margin: 1rem auto;
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  border-radius: 1rem;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1rem 0;
 }

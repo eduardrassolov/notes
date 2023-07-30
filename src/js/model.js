@@ -1,7 +1,9 @@
-import { ARCHIVE_ALL, DELETE_ALL, URL } from "./config.js";
+import { ARCHIVE_ALL, DELETE_ALL, URL, filterArchived } from "./config.js";
 
 export const state = {
+  allNotes: [],
   notes: [],
+  filter: filterArchived.active,
   archivedNotes: 0,
   selectedNote: {},
 };
@@ -9,11 +11,13 @@ export const state = {
 export const loadNotes = async () => {
   try {
     const res = await fetch(URL);
-    const notes = await res.json();
+    const allNotes = await res.json();
 
     if (!res.status) throw new Error(`${data.message} (${res.status})`);
 
-    state.notes = [...notes];
+    state.allNotes = [...allNotes];
+
+    filterNotes();
   } catch (err) {
     console.error(err);
   }
@@ -84,6 +88,20 @@ export const getNoteById = async (id) => {
   try {
     //TODO don't forget to change find !== to !===
     state.selectedNote = state.notes.find((note) => note.id == id);
+  } catch (err) {
+    console.error(err);
+  }
+};
+export const filterNotes = async (isArchived = false) => {
+  console.log("status", isArchived);
+  try {
+    if (isArchived === "all") return (state.notes = [...state.allNotes]);
+
+    state.notes = state.allNotes.filter(
+      (note) => note.isArchived === isArchived
+    );
+
+    console.log(state.notes);
   } catch (err) {
     console.error(err);
   }

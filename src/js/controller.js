@@ -4,10 +4,11 @@ import * as model from "./model.js";
 import notesView from "./views/notesView.js";
 import addNoteView from "./views/addNoteView.js";
 import editNoteView from "./views/editNoteView.js";
-import { ARCHIVE_ALL, DELETE_ALL } from "./config.js";
+import { ARCHIVE_ALL, DELETE_ALL, filterArchived } from "./config.js";
 
 const BTN_DELETE_ALL = document.querySelector(".btn-delete-all");
 const BTN_ARCHIVE_ALL = document.querySelector(".btn-archive-all");
+const DD_FILTER = document.querySelector(".note-filter");
 
 async function controlGetNotes() {
   try {
@@ -28,6 +29,7 @@ async function controlDeleteNote(id) {
 async function controlArchiveNote(id) {
   try {
     await model.archiveNote(id);
+    console.log("archvied");
     notesView.render(model.state.notes);
   } catch (err) {
     console.error(err);
@@ -49,6 +51,15 @@ async function controlEditNote(id, note) {
     await model.updateNote(id, note);
     notesView.render(model.state.notes);
     editNoteView.close();
+  } catch (err) {
+    console.error(err);
+  }
+}
+async function controlFilterNotes({ target }) {
+  try {
+    const value = target.value;
+    await model.filterNotes(filterArchived[value]);
+    notesView.render(model.state.notes);
   } catch (err) {
     console.error(err);
   }
@@ -79,5 +90,6 @@ function init() {
   BTN_ARCHIVE_ALL.addEventListener("click", () =>
     controlArchiveNote(ARCHIVE_ALL)
   );
+  DD_FILTER.addEventListener("change", controlFilterNotes);
 }
 init();

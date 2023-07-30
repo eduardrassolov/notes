@@ -11,6 +11,15 @@
   <body>
     <div id="app">
       <div class="container">
+        <div class="header">
+          <select class="note-filter">
+            <option value="active" selected>Show Active</option>
+            <option value="archived">Show Archived</option>
+            <option value="all">Show All</option>
+          </select>
+          <button class="btn btn-add-note">add note</button>
+        </div>
+
         <table class="main-table">
           <thead class="table-header">
             <tr>
@@ -38,9 +47,20 @@
 
           <tbody class="table-content"></tbody>
         </table>
-
-        <button class="btn btn-add-note">add note</button>
       </div>
+
+      <!-- Stats table -->
+      <div class="container">
+        <table class="stats-table">
+          <thead>
+            <th class="cell-name">Name category</th>
+            <th class="cell-created">Active</th>
+            <th class="cell-category">Archived</th>
+          </thead>
+          <tbody class="stats-table-content"></tbody>
+        </table>
+      </div>
+      <!-- Stats table -->
 
       <!-- modal window for new note. overlay -->
       <div class="overlay hidden"></div>

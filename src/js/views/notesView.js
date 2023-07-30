@@ -1,5 +1,10 @@
 import { formatTime } from "../services/formatTime";
-import { formatCreate, formatMention, getValueCategory } from "../config";
+import {
+  formatCreate,
+  formatMention,
+  getValueCategory,
+  icons,
+} from "../config";
 
 class NotesView {
   _parentElement = document.querySelector(".table-content");
@@ -18,20 +23,30 @@ class NotesView {
   _generateMarkupNote(note) {
     return `
         <tr class="row">
-            <td class="cell cell-name">${note?.name}</td>
-            <td class="cell cell-created">${formatTime(
+            <td class="cell cell-name">
+              <div class="cell-name-container">
+                <img src="${icons[note.category]}"/> 
+                <span> ${note?.name}<span>
+              </div>   
+            </td>
+
+            <td class="cell cell-created"><div class="cell-name-container"><span>${formatTime(
               note?.created,
               formatCreate
-            )}</td>
+            )}</span></div></td>
+            
             <td class="cell cell-category">${getValueCategory(
               note.category
             )}</td>
+            
             <td class="cell cell-content">${note?.content}</td>
+
             <td class="cell-mention">${
               note.mentioned?.length
                 ? this._generateMention(note.mentioned)
                 : ""
             }</td>
+
             <td class="cell-operation">
               <div class="btns-cell">
                 <a class="btn-edit" value=${
@@ -47,6 +62,7 @@ class NotesView {
                 }><img src="public/delete.png" alt="delete"/></a>        
               </div>
             </td>
+
         </tr>
         `;
   }
@@ -57,7 +73,7 @@ class NotesView {
   }
   render(data) {
     this._data = data;
-
+    console.log("render", data);
     const markup = this._generateMarkup();
 
     this._clean();
