@@ -40,7 +40,16 @@ async function controlAddNote(note) {
     console.error(err);
   }
 }
-async function controlEditNote() {}
+async function controlEditNote(id, note) {
+  console.log(id, note);
+  try {
+    await model.updateNote(id, note);
+    notesView.render(model.state.notes);
+    editNoteView.close();
+  } catch (err) {
+    console.error(err);
+  }
+}
 
 function controllOpenAdd() {
   addNoteView.open();
@@ -49,17 +58,18 @@ function controllOpenAdd() {
 function controlOpenEdit(id) {
   model.getNoteById(id);
   const note = model.state.selectedNote;
+
   editNoteView.open(note);
-  editNoteView.addHandlerSubmit(controlEditNote);
+  editNoteView.addHandlerSubmit(controlEditNote, note.id);
 }
 
 function init() {
   notesView.addHandlerRender(controlGetNotes);
 
+  notesView.addHandlerBtn(controlOpenEdit, ".btn-edit");
   notesView.addHandlerBtn(controlDeleteNote, ".btn-del");
   notesView.addHandlerBtn(controlArchiveNote, ".btn-archive");
 
-  notesView.addHandlerBtn(controlOpenEdit, ".btn-edit");
   addNoteView.addHandlerBtn(controllOpenAdd);
 }
 init();

@@ -45,7 +45,6 @@ export const deleteNote = async (id) => {
   }
 };
 export const archiveNote = async (id) => {
-  console.log(id);
   try {
     state.notes = state.notes.map((note) => {
       if (note.id == id) {
@@ -57,16 +56,21 @@ export const archiveNote = async (id) => {
     console.error(err);
   }
 };
-export const updateNote = async (id, note) => {
+//TODO refactor params
+export const updateNote = async (
+  id,
+  { newName, newCategory, newContent, newMentioned }
+) => {
   try {
-    state.notes = state.notes.map((el) => {
-      if (el.id == id) {
-        el.name = note.name;
-        el.category = note.category;
-        el.content = note.content;
-        el.mentioned = note.mentioned;
+    state.notes = state.notes.map((item) => {
+      console.log(item);
+      if (item.id == id) {
+        item.name = newName;
+        item.category = newCategory;
+        item.content = newContent;
+        item.mentioned = newMentioned;
       }
-      return el;
+      return item;
     });
   } catch (err) {
     console.error(err);

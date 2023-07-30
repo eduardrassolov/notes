@@ -30,8 +30,8 @@ export default class ModalView {
 
   render() {
     const markup = this._generateMarkup();
-
     this._clean();
+
     this._parentElement.insertAdjacentHTML("afterbegin", markup);
     this._initBtns();
   }

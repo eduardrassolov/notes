@@ -28,7 +28,9 @@ class NotesView {
             )}</td>
             <td class="cell cell-content">${note?.content}</td>
             <td class="cell cell-mentioned">${
-              note.mentioned.length ? this._generateMention(note.mentioned) : ""
+              note.mentioned?.length
+                ? this._generateMention(note.mentioned)
+                : ""
             }</td>
             <td class="cell-operation">
               <div class="btns-cell">
