@@ -1,7 +1,8 @@
-import { URL } from "./config.js";
+import { ARCHIVE_ALL, DELETE_ALL, URL } from "./config.js";
 
 export const state = {
   notes: [],
+  archivedNotes: 0,
   selectedNote: {},
 };
 
@@ -39,6 +40,8 @@ export const createNote = async (note) => {
 export const deleteNote = async (id) => {
   try {
     //TODO change filter !==
+    if (id === DELETE_ALL) return (state.notes = []);
+
     state.notes = state.notes.filter((note) => note.id != id);
   } catch (err) {
     console.error(err);
@@ -47,7 +50,7 @@ export const deleteNote = async (id) => {
 export const archiveNote = async (id) => {
   try {
     state.notes = state.notes.map((note) => {
-      if (note.id == id) {
+      if (note.id == id || id === ARCHIVE_ALL) {
         note.isArchived = !note.isArchived;
       }
       return note;

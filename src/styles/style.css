@@ -76,6 +76,15 @@ textarea {
   padding: 0.5rem;
   border-spacing: 0;
 }
+.iconEmpty {
+  display: flex;
+  width: 22px;
+  height: 22px;
+}
+.header-icons {
+  display: flex;
+  justify-content: space-between;
+}
 .row {
   background: gray;
   margin-bottom: 2rem;
@@ -87,7 +96,6 @@ img {
   cursor: pointer;
 }
 a {
-  margin: 0 auto;
 }
 thead > tr {
   background-color: #000000;
@@ -123,6 +131,8 @@ tbody tr:hover {
 }
 .btns-cell {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .btn {

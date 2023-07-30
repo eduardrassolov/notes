@@ -36,15 +36,15 @@ class NotesView {
               <div class="btns-cell">
                 <a class="btn-edit" value=${
                   note.id
-                }><img src="public/editIcon.png" alt="edit"/></a>
+                }><img src="public/edit.png" alt="edit"/></a>
 
                 <a class="btn-archive" value=${
                   note.id
-                }><img src="public/archiveIcon.png" alt="archive"/></a>
+                }><img src="public/archive.png" alt="archive"/></a>
 
                 <a class="btn-del" value=${
                   note.id
-                }><img src="public/deleteIcon.png" alt="delete"/></a>        
+                }><img src="public/delete.png" alt="delete"/></a>        
               </div>
             </td>
         </tr>

@@ -4,6 +4,10 @@ import * as model from "./model.js";
 import notesView from "./views/notesView.js";
 import addNoteView from "./views/addNoteView.js";
 import editNoteView from "./views/editNoteView.js";
+import { ARCHIVE_ALL, DELETE_ALL } from "./config.js";
+
+const BTN_DELETE_ALL = document.querySelector(".btn-delete-all");
+const BTN_ARCHIVE_ALL = document.querySelector(".btn-archive-all");
 
 async function controlGetNotes() {
   try {
@@ -14,7 +18,6 @@ async function controlGetNotes() {
   }
 }
 async function controlDeleteNote(id) {
-  console.log("id", id);
   try {
     await model.deleteNote(id);
     notesView.render(model.state.notes);
@@ -71,5 +74,10 @@ function init() {
   notesView.addHandlerBtn(controlArchiveNote, ".btn-archive");
 
   addNoteView.addHandlerBtn(controllOpenAdd);
+
+  BTN_DELETE_ALL.addEventListener("click", () => controlDeleteNote(DELETE_ALL));
+  BTN_ARCHIVE_ALL.addEventListener("click", () =>
+    controlArchiveNote(ARCHIVE_ALL)
+  );
 }
 init();

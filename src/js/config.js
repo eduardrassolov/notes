@@ -1,4 +1,6 @@
 export const URL = "../src/data/data.json";
+export const DELETE_ALL = "all";
+export const ARCHIVE_ALL = "all";
 
 export const formatCreate = {
   month: "long",
