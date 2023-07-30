@@ -5,7 +5,6 @@ import ModalView from "./ModalView.js";
 class EditNoteView extends ModalView {
   constructor() {
     super(".btn-edit");
-    // this.render();
   }
   _generateMarkup() {
     const { id, name, category, content, mentioned } = this._entryData;

@@ -1,10 +1,15 @@
 "use strict";
 import { async } from "regenerator-runtime";
-import * as model from "./model.js";
+
+import { loadNotes, deleteNote, createNote, updateNote } from "./model/crud.js";
+import { filterNotes, getNoteById, archiveNote } from "./model/model.js";
+import { state } from "./model/model.js";
 import notesView from "./views/notesView.js";
 import addNoteView from "./views/addNoteView.js";
 import editNoteView from "./views/editNoteView.js";
+import statsView from "./views/statsView.js";
 import { ARCHIVE_ALL, DELETE_ALL, filterArchived } from "./config.js";
+import { calcStats } from "./model/stats.js";
 
 const BTN_DELETE_ALL = document.querySelector(".btn-delete-all");
 const BTN_ARCHIVE_ALL = document.querySelector(".btn-archive-all");
@@ -12,25 +17,28 @@ const DD_FILTER = document.querySelector(".note-filter");
 
 async function controlGetNotes() {
   try {
-    await model.loadNotes();
-    notesView.render(model.state.notes);
+    await loadNotes();
+
+    notesView.render(state.notes);
+    controlStats();
   } catch (err) {
     console.error(err);
   }
 }
+
 async function controlDeleteNote(id) {
   try {
-    await model.deleteNote(id);
-    notesView.render(model.state.notes);
+    await deleteNote(id);
+    notesView.render(state.notes);
   } catch (err) {
     console.error(err);
   }
 }
 async function controlArchiveNote(id) {
   try {
-    await model.archiveNote(id);
+    await archiveNote(id);
     console.log("archvied");
-    notesView.render(model.state.notes);
+    notesView.render(state.notes);
   } catch (err) {
     console.error(err);
   }
@@ -38,8 +46,8 @@ async function controlArchiveNote(id) {
 async function controlAddNote(note) {
   console.log("submit");
   try {
-    await model.createNote(note);
-    notesView.render(model.state.notes);
+    await createNote(note);
+    notesView.render(state.notes);
     addNoteView.close();
   } catch (err) {
     console.error(err);
@@ -48,8 +56,8 @@ async function controlAddNote(note) {
 async function controlEditNote(id, note) {
   console.log(id, note);
   try {
-    await model.updateNote(id, note);
-    notesView.render(model.state.notes);
+    await updateNote(id, note);
+    notesView.render(state.notes);
     editNoteView.close();
   } catch (err) {
     console.error(err);
@@ -58,8 +66,8 @@ async function controlEditNote(id, note) {
 async function controlFilterNotes({ target }) {
   try {
     const value = target.value;
-    await model.filterNotes(filterArchived[value]);
-    notesView.render(model.state.notes);
+    await filterNotes(filterArchived[value]);
+    notesView.render(state.notes);
   } catch (err) {
     console.error(err);
   }
@@ -70,11 +78,15 @@ function controllOpenAdd() {
   addNoteView.addHandlerSubmit(controlAddNote);
 }
 function controlOpenEdit(id) {
-  model.getNoteById(id);
-  const note = model.state.selectedNote;
+  getNoteById(id);
+  const note = state.selectedNote;
 
   editNoteView.open(note);
   editNoteView.addHandlerSubmit(controlEditNote, note.id);
+}
+function controlStats() {
+  calcStats();
+  statsView.render(state.stats);
 }
 
 function init() {
