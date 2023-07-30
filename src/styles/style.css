@@ -11,8 +11,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-
-  --bg-color: #ffffff;
 }
 body {
   margin: 0;
@@ -220,6 +218,7 @@ tbody tr:hover {
   flex-direction: column;
   margin-bottom: 1rem;
 }
+
 .modal-window input,
 textarea,
 select {

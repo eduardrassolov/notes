@@ -12,8 +12,9 @@ import { filterArchived } from "../config.js";
 async function controlGetNotes() {
   try {
     await loadNotes();
-    notesView.render(state.allNotes);
     controlStats();
+    filterNotes();
+    notesView.render(state.notes);
   } catch (err) {
     console.error(err);
   }
@@ -26,8 +27,9 @@ async function controlGetNotes() {
 async function controlDeleteNote(id) {
   try {
     await deleteNote(id);
-    notesView.render(state.allNotes);
     controlStats();
+    filterNotes(state.filter);
+    notesView.render(state.notes);
   } catch (err) {
     console.error(err);
   }
@@ -40,8 +42,9 @@ async function controlDeleteNote(id) {
 async function controlArchiveNote(id) {
   try {
     await archiveNote(id);
-    notesView.render(state.allNotes);
     controlStats();
+    filterNotes(state.filter);
+    notesView.render(state.notes);
   } catch (err) {
     console.error(err);
   }
@@ -54,8 +57,8 @@ async function controlArchiveNote(id) {
 async function controlFilterNotes({ target }) {
   try {
     const value = target.value;
-    await filterNotes(filterArchived[value]);
-    notesView.render(state.allNotes);
+    filterNotes(filterArchived[value]);
+    notesView.render(state.notes);
   } catch (err) {
     console.error(err);
   }

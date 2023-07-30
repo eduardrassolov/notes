@@ -47,17 +47,14 @@ export const getNoteById = async (id) => {
   }
 };
 
-//TODO refactor params
 export const filterNotes = async (isArchived = false) => {
-  console.log("status", isArchived);
+  state.filter = isArchived;
   try {
     if (isArchived === "all") return (state.notes = [...state.allNotes]);
 
     state.notes = state.allNotes.filter(
-      (note) => note.isArchived === isArchived
+      (note) => note.isArchived === state.filter
     );
-
-    console.log(state.notes);
   } catch (err) {
     console.error(err);
   }

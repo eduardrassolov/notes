@@ -59,17 +59,19 @@ class NotesView {
 
             <td class="cell-operation">
               <div class="btns-cell">
-                <a class="btn-edit" value=${
-                  note.id
-                }><img src="public/edit.png" alt="edit"/></a>
+                <a class="btn-edit" value=${note.id}>
+                  <img src="public/edit.png" alt="edit"/>
+                </a>
 
-                <a class="btn-archive" value=${
-                  note.id
-                }><img src="public/archive.png" alt="archive"/></a>
+                <a class="btn-archive" value=${note.id}>
+                  <img src="public/${
+                    note.isArchived ? "unArchive" : "archive"
+                  }.png" alt="archive"/>
+                </a>
 
-                <a class="btn-del" value=${
-                  note.id
-                }><img src="public/delete.png" alt="delete"/></a>        
+                <a class="btn-del" value=${note.id}>
+                  <img src="public/delete.png" alt="delete"/>
+                </a>        
               </div>
             </td>
 

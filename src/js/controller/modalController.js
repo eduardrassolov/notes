@@ -3,7 +3,7 @@ import editNoteView from "../views/editNoteView.js";
 import { controlStats } from "./controller.js";
 import { createNote, updateNote } from "../model/crud.js";
 import notesView from "../views/notesView.js";
-import { getNoteById, state } from "../model/model.js";
+import { filterNotes, getNoteById, state } from "../model/model.js";
 
 /**
  * Controller for the open modal for new note
@@ -31,7 +31,10 @@ function controlOpenEdit(id) {
 async function controlAddNote(note) {
   try {
     await createNote(note);
-    notesView.render(state.allNotes);
+
+    filterNotes(state.filter);
+    notesView.render(state.notes);
+
     addNoteView.close();
     controlStats();
   } catch (err) {
@@ -48,7 +51,8 @@ async function controlEditNote(id, note) {
   console.log(id, note);
   try {
     await updateNote(id, note);
-    notesView.render(state.allNotes);
+    filterNotes(state.filter);
+    notesView.render(state.notes);
     editNoteView.close();
     controlStats();
   } catch (err) {

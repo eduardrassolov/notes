@@ -5,7 +5,6 @@
  * @returns {string}
  */
 export function formatTime(dateTime, options) {
-  console.log(options);
   if (!dateTime) return "";
   return new Date(dateTime).toLocaleDateString("en-US", options);
 }
