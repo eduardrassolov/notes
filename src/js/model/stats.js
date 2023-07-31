@@ -26,12 +26,11 @@ const calcStatsByCategory = (category) => {
     const filteredNotes = state.allNotes.filter(
       (note) => note.category === category
     );
-    const activeFilteredNotes = filteredNotes.reduce((acc, note) => {
-      if (!note.isArchived) {
-        acc++;
-      }
-      return acc;
-    }, 0);
+
+    const activeFilteredNotes = filteredNotes.reduce(
+      (acc, note) => (note.isArchived ? acc : ++acc),
+      0
+    );
 
     return {
       key: category,

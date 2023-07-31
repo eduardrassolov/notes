@@ -22,7 +22,6 @@ export const loadNotes = async () => {
  */
 export const createNote = async (note) => {
   try {
-    console.log("in", note);
     const newNote = {
       id: crypto.randomUUID(),
       isArchived: false,
@@ -32,8 +31,6 @@ export const createNote = async (note) => {
       content: note.newContent,
       mentioned: [note.newMention],
     };
-
-    console.log("out", newNote);
     state.allNotes.push(newNote);
   } catch (err) {
     console.error(err);
