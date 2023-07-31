@@ -94,4 +94,7 @@ export default class ModalView {
     this._overlay.classList.add("hidden");
     this._parentElement.classList.add("hidden");
   }
+  showErrorMessage(message) {
+    alert(message);
+  }
 }

@@ -34,6 +34,7 @@ export const createNote = async (note) => {
     state.allNotes.push(newNote);
   } catch (err) {
     console.error(err);
+    throw err;
   }
 };
 
@@ -46,6 +47,7 @@ export const deleteNote = async (id) => {
     state.allNotes = state.allNotes.filter((note) => note.id !== id);
   } catch (err) {
     console.error(err);
+    throw err;
   }
 };
 
@@ -54,6 +56,7 @@ export const deleteAllNotes = async () => {
     return (state.allNotes = []);
   } catch (err) {
     console.error(err);
+    throw err;
   }
 };
 
@@ -82,5 +85,6 @@ export const updateNote = async (
     });
   } catch (err) {
     console.error(err);
+    throw err;
   }
 };

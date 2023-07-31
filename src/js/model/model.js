@@ -31,6 +31,7 @@ export const archiveNote = async (id) => {
     });
   } catch (err) {
     console.error(err);
+    throw err;
   }
 };
 export const archiveAllNotes = async () => {
@@ -41,6 +42,7 @@ export const archiveAllNotes = async () => {
     });
   } catch (err) {
     console.error(err);
+    throw err;
   }
 };
 
@@ -53,6 +55,7 @@ export const getNoteById = async (id) => {
     state.selectedNote = state.allNotes.find((note) => note.id === id);
   } catch (err) {
     console.error(err);
+    throw err;
   }
 };
 
@@ -66,5 +69,6 @@ export const filterNotes = async (isArchived = false) => {
     );
   } catch (err) {
     console.error(err);
+    throw err;
   }
 };

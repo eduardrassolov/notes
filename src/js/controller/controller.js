@@ -22,6 +22,7 @@ async function controlGetNotes() {
     notesView.render(state.notes);
   } catch (err) {
     console.error(err);
+    notesView.showErrorMessage(err.message);
   }
 }
 
@@ -37,6 +38,7 @@ async function controlDeleteNote(id) {
     notesView.render(state.notes);
   } catch (err) {
     console.error(err);
+    notesView.showErrorMessage(err.message);
   }
 }
 
@@ -48,6 +50,7 @@ async function controlDeleteAllNotes() {
     notesView.render(state.notes);
   } catch (err) {
     console.error(err);
+    notesView.showErrorMessage(err.message);
   }
 }
 
@@ -63,6 +66,7 @@ async function controlArchiveNote(id) {
     notesView.render(state.notes);
   } catch (err) {
     console.error(err);
+    notesView.showErrorMessage(err.message);
   }
 }
 export const controlArchiveAellNote = async () => {
@@ -73,6 +77,7 @@ export const controlArchiveAellNote = async () => {
     notesView.render(state.notes);
   } catch (err) {
     console.error(err);
+    notesView.showErrorMessage(err.message);
   }
 };
 
@@ -87,6 +92,7 @@ async function controlFilterNotes({ target }) {
     notesView.render(state.notes);
   } catch (err) {
     console.error(err);
+    notesView.showErrorMessage(err.message);
   }
 }
 

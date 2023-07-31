@@ -122,6 +122,9 @@ class NotesView {
       handler(value);
     });
   }
+  showErrorMessage(message) {
+    alert(message);
+  }
 }
 
 export default new NotesView();

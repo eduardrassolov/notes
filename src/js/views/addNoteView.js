@@ -84,14 +84,15 @@ class AddNoteView extends ModalView {
   addHandlerSubmit(handler) {
     this._form.addEventListener("submit", function (e) {
       e.preventDefault();
-      console.log(this._form);
-      const dataArr = [...new FormData(this)];
-      const data = Object.fromEntries(dataArr);
 
-      if (!data.newName.trim() || !data.newContent.trim())
-        return alert("Please fill out all fields");
+      try {
+        const dataArr = [...new FormData(this)];
+        const data = Object.fromEntries(dataArr);
 
-      handler(data);
+        handler(data);
+      } catch (err) {
+        console.error(err);
+      }
     });
   }
 }

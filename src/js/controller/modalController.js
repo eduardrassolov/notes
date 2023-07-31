@@ -30,6 +30,9 @@ function controlOpenEdit(id) {
  */
 async function controlAddNote(note) {
   try {
+    if (!note.newName.trim() || !note.newContent.trim())
+      throw new Error("Please fill in all fields");
+
     await createNote(note);
 
     filterNotes(state.filter);
@@ -39,6 +42,7 @@ async function controlAddNote(note) {
     controlStats();
   } catch (err) {
     console.error(err);
+    addNoteView.showErrorMessage(err.message);
   }
 }
 
@@ -48,8 +52,10 @@ async function controlAddNote(note) {
  * @param {object} updatedNote
  */
 async function controlEditNote(id, note) {
-  console.log(id, note);
   try {
+    if (!note.newName.trim() || !note.newContent.trim())
+      throw new Error("Please fill in all fields");
+
     await updateNote(id, note);
     filterNotes(state.filter);
     notesView.render(state.notes);
@@ -57,6 +63,7 @@ async function controlEditNote(id, note) {
     controlStats();
   } catch (err) {
     console.error(err);
+    editNoteView.showErrorMessage(err.message);
   }
 }
 
