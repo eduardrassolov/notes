@@ -1,6 +1,5 @@
 export const URL = "../src/data/data.json";
-export const DELETE_ALL = "all";
-export const ARCHIVE_ALL = "all";
+
 export const icons = {
   idea: "public/idea.png",
   task: "public/task.png",

@@ -1,4 +1,4 @@
-import { URL, DELETE_ALL } from "../config.js";
+import { URL } from "../config.js";
 import { state } from "./model.js";
 
 /**
@@ -46,10 +46,15 @@ export const createNote = async (note) => {
  */
 export const deleteNote = async (id) => {
   try {
-    //TODO change filter !==
-    if (id === DELETE_ALL) return (state.allNotes = []);
+    state.allNotes = state.allNotes.filter((note) => note.id !== id);
+  } catch (err) {
+    console.error(err);
+  }
+};
 
-    state.allNotes = state.allNotes.filter((note) => note.id != id);
+export const deleteAllNotes = async () => {
+  try {
+    return (state.allNotes = []);
   } catch (err) {
     console.error(err);
   }

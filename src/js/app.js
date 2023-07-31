@@ -4,12 +4,13 @@ import {
   controllOpenAdd,
   controlOpenEdit,
 } from "./controller/modalController.js";
-import { ARCHIVE_ALL, DELETE_ALL } from "./config";
 import {
   controlArchiveNote,
+  controlArchiveAellNote,
   controlDeleteNote,
   controlFilterNotes,
   controlGetNotes,
+  controlDeleteAllNotes,
 } from "./controller/controller";
 
 export const BTN_DELETE_ALL = document.querySelector(".btn-delete-all");
@@ -30,10 +31,8 @@ function init() {
 
   addNoteView.addHandlerBtn(controllOpenAdd);
 
-  BTN_DELETE_ALL.addEventListener("click", () => controlDeleteNote(DELETE_ALL));
-  BTN_ARCHIVE_ALL.addEventListener("click", () =>
-    controlArchiveNote(ARCHIVE_ALL)
-  );
+  BTN_DELETE_ALL.addEventListener("click", controlDeleteAllNotes);
+  BTN_ARCHIVE_ALL.addEventListener("click", controlArchiveAellNote);
   DD_FILTER.addEventListener("change", controlFilterNotes);
 }
 

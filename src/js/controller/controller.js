@@ -1,6 +1,11 @@
 "use strict";
-import { loadNotes, deleteNote } from "../model/crud.js";
-import { filterNotes, archiveNote, state } from "../model/model.js";
+import { loadNotes, deleteNote, deleteAllNotes } from "../model/crud.js";
+import {
+  filterNotes,
+  archiveNote,
+  state,
+  archiveAllNotes,
+} from "../model/model.js";
 import notesView from "../views/notesView.js";
 import statsView from "../views/statsView.js";
 import { calcStats } from "../model/stats.js";
@@ -35,6 +40,17 @@ async function controlDeleteNote(id) {
   }
 }
 
+async function controlDeleteAllNotes() {
+  try {
+    await deleteAllNotes();
+    controlStats();
+    filterNotes(state.filter);
+    notesView.render(state.notes);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 /**
  * Controller for the archive/deachive note
  * @param {string} id
@@ -49,6 +65,16 @@ async function controlArchiveNote(id) {
     console.error(err);
   }
 }
+export const controlArchiveAellNote = async () => {
+  try {
+    await archiveAllNotes();
+    controlStats();
+    filterNotes(state.filter);
+    notesView.render(state.notes);
+  } catch (err) {
+    console.error(err);
+  }
+};
 
 /**
  *
@@ -76,6 +102,7 @@ export {
   controlStats,
   controlGetNotes,
   controlDeleteNote,
+  controlDeleteAllNotes,
   controlArchiveNote,
   controlFilterNotes,
 };

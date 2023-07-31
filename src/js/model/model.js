@@ -1,4 +1,4 @@
-import { filterArchived, ARCHIVE_ALL } from "../config.js";
+import { filterArchived } from "../config.js";
 
 /**
  * State of the app
@@ -24,9 +24,19 @@ export const state = {
 export const archiveNote = async (id) => {
   try {
     state.allNotes = state.allNotes.map((note) => {
-      if (note.id == id || id === ARCHIVE_ALL) {
+      if (note.id === id) {
         note.isArchived = !note.isArchived;
       }
+      return note;
+    });
+  } catch (err) {
+    console.error(err);
+  }
+};
+export const archiveAllNotes = async () => {
+  try {
+    state.allNotes = state.allNotes.map((note) => {
+      note.isArchived = !note.isArchived;
       return note;
     });
   } catch (err) {

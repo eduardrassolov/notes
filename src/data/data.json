@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": "1",
     "name": "test",
     "created": "2019-01-01T00:00:00.000Z",
     "category": "task",
@@ -9,16 +9,16 @@
     "isArchived": false
   },
   {
-    "id": 2,
+    "id": "2",
     "name": "test2",
     "created": "2019-01-01T00:00:00.000Z",
     "category": "task",
     "content": "Odio mauris consectetur tellus est elit dapibus eget. Ultrices facilisis tincidunt arcu id, tristique potenti morbi tortor laore.",
     "mentioned": [],
-    "isArchived": true
+    "isArchived": false
   },
   {
-    "id": 3,
+    "id": "3",
     "name": "test3",
     "created": "2019-01-01T00:00:00.000Z",
     "category": "idea",
@@ -27,16 +27,16 @@
     "isArchived": false
   },
   {
-    "id": 4,
+    "id": "4",
     "name": "test4",
     "created": "2019-01-01T00:00:00.000Z",
     "category": "random",
     "content": "Odio mauris consectetur tellus est elit dapibus eget. Ultrices facilisis tincidunt arcu id, tristique potenti morbi tortor laore.",
     "mentioned": [],
-    "isArchived": true
+    "isArchived": false
   },
   {
-    "id": 5,
+    "id": "5",
     "name": "test5",
     "created": "2019-01-01T00:00:00.000Z",
     "category": "quote",
@@ -45,7 +45,7 @@
     "isArchived": false
   },
   {
-    "id": 6,
+    "id": "6",
     "name": "test9",
     "created": "2019-01-01T00:00:00.000Z",
     "category": "idea",
@@ -54,7 +54,7 @@
     "isArchived": false
   },
   {
-    "id": 7,
+    "id": "7",
     "name": "test51",
     "created": "2019-01-01T00:00:00.000Z",
     "category": "random",
