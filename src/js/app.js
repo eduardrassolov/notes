@@ -6,7 +6,7 @@ import {
 } from "./controller/modalController.js";
 import {
   controlArchiveNote,
-  controlArchiveAellNote,
+  controlArchiveAllNote,
   controlDeleteNote,
   controlFilterNotes,
   controlGetNotes,
@@ -32,7 +32,7 @@ function init() {
   addNoteView.addHandlerBtn(controllOpenAdd);
 
   BTN_DELETE_ALL.addEventListener("click", controlDeleteAllNotes);
-  BTN_ARCHIVE_ALL.addEventListener("click", controlArchiveAellNote);
+  BTN_ARCHIVE_ALL.addEventListener("click", controlArchiveAllNote);
   DD_FILTER.addEventListener("change", controlFilterNotes);
 }
 

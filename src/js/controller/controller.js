@@ -69,7 +69,7 @@ async function controlArchiveNote(id) {
     notesView.showErrorMessage(err.message);
   }
 }
-export const controlArchiveAellNote = async () => {
+export const controlArchiveAllNote = async () => {
   try {
     await archiveAllNotes();
     controlStats();
